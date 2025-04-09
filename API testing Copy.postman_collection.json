@@ -1,0 +1,862 @@
+{
+	"info": {
+		"_postman_id": "16738e81-e2b5-4a10-9f9c-b117d44a6420",
+		"name": "API testing Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39745813"
+	},
+	"item": [
+		{
+			"name": "User API",
+			"item": [
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								
+								"exec": [
+									"pm.test(\"verify Status code  200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"verify Status should be OK\", function () {\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"OK\");\r",
+									"});\r",
+									"pm.test(\"verify response time should be grater than 100\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.greaterThan(100);\r",
+									"});\r",
+									"pm.test(\"verify the body of the response\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"verify the type of the response body should be unknown\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.type).to.be.equal(\"unknown\");\r",
+									"});\r",
+									"pm.test(\"verify the message of the response body should be ok\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.message).to.be.equal(\"ok\");\r",
+									"});\r",
+									"pm.environment.set(\"usrName\", \"username\");\r",
+									"pm.environment.set(\"fName\", \"firstName\");\r",
+									"pm.environment.set(\"lName\", \"lastName\");\r",
+									"pm.environment.set(\"mail\", \"email\");\r",
+									"pm.environment.set(\"pword\", \"password\");\r",
+									"pm.environment.set(\"pNumber\", \"phone\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n  {\r\n    \"id\": 1,\r\n    \"username\": \"apurvapandit\",\r\n    \"firstName\": \"apurva\",\r\n    \"lastName\": \"pandit\",\r\n    \"email\": \"abc@gmail.com\",\r\n    \"password\": \"Testometer@123\",\r\n    \"phone\": \"+919757846457\",\r\n    \"userStatus\": 0\r\n  }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser-username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"verify Status code should be 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"verify Status should be OK\", function () {\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"OK\");\r",
+									"});\r",
+									"pm.test(\"verify response time should be grater than 100\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.greaterThan(100);\r",
+									"});\r",
+									"pm.test(\"verify the body of the response\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"verify the type of the response body should be unknown\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.type).to.be.equal(\"unknown\");\r",
+									"});\r",
+									"pm.test(\"verify the message of the response body should be ok\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.message).to.be.equal(\"ok\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n  {\r\n    \"id\": 1,\r\n    \"username\": \"YDZ\",\r\n    \"firstName\": \"apurva\",\r\n    \"lastName\": \"pandit\",\r\n    \"email\": \"abc@gmail.com\",\r\n    \"password\": \"Testometer@123\",\r\n    \"phone\": \"9757846457\",\r\n    \"userStatus\": 0\r\n  }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/YDZ",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"YDZ"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User_withInvalid method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"verify Status code should be 405\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(405);\r",
+									"});\r",
+									"pm.test(\"verify Status should be Method Not Allowed\", function () {\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"Method Not Allowed\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": 1,\r\n    \"username\": \"apurvapandit\",\r\n    \"firstName\": \"apurva\",\r\n    \"lastName\": \"pandit\",\r\n    \"email\": \"abc@gmail.com\",\r\n    \"password\": \"Testometer@123\",\r\n    \"phone\": \"9757846457\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/createWithList",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"createWithList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User_Invalid scenario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"verify Status code should be 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"verify Status should be OK\", function () {\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"OK\");\r",
+									"});\r",
+									"pm.test(\"verify response time should be grater than 100\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.greaterThan(100);\r",
+									"});\r",
+									"pm.test(\"verify the body of the response\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"verify the type of the response body should be unknown\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.type).to.be.equal(\"unknown\");\r",
+									"});\r",
+									"pm.test(\"verify the message of the response body should be ok\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.message).to.be.equal(\"ok\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n  \r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/createWithList",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"createWithList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User_withoutUsername",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"verify Status code should be 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"verify Status should be OK\", function () {\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"OK\");\r",
+									"});\r",
+									"pm.test(\"verify response time should be grater than 100\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.greaterThan(100);\r",
+									"});\r",
+									"pm.test(\"verify the body of the response\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"verify the type of the response body should be unknown\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.type).to.be.equal(\"unknown\");\r",
+									"});\r",
+									"pm.test(\"verify the message of the response body should be ok\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.message).to.be.equal(\"ok\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": 1,\r\n   // \"username\": \"apurvapandit\",\r\n  //  \"firstName\": \"apurva\",\r\n    \"lastName\": \"pandit\",\r\n    //\"email\": \"abc@gmail.com\",\r\n   // \"password\": \"Testometer@123\",\r\n    \"phone\": \"9757846457\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/createWithList",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"createWithList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User_without body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"verify Status code should be 415\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(415);\r",
+									"});\r",
+									"pm.test(\"verify Status should be Unsupported Media Type\", function () {\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"Unsupported Media Type\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/createWithList",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"createWithList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"variable_key\", \"variable_value\");\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.expect(pm.response.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"OK\");\r",
+									"});\r",
+									"pm.test(\"verify the id of the response body equal to 1 \", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.id).to.be.equal(1);\r",
+									"});\r",
+									"pm.test(\"verify the username of the response body apurvapandit\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.username).to.be.equal(\"apurvapandit\");\r",
+									"});\r",
+									"pm.test(\"verify the firstName of the response body apurva\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.firstName).to.be.equal(\"apurva\");\r",
+									"});\r",
+									"pm.test(\"verify the lastName of the response body pandit\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.lastName).to.be.equal(\"pandit\");\r",
+									"});\r",
+									"pm.test(\"verify the email of the response body abc@gmail.com\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.email).to.be.equal(\"abc@gmail.com\");\r",
+									"});\r",
+									"//pm.test(\"verify the password of the response body Testometer@123\", function () {\r",
+									"  //  var resp = pm.response.json();\r",
+									"    //pm.expect(resp.password).to.be.equal(\"Testometer@123\");\r",
+									"//});\r",
+									"//pm.test(\"verify the phone of the response body should be 9757846457\", function () {\r",
+									"  //  var resp = pm.response.json();\r",
+									"  //  pm.expect(resp.phone).to.be.equal(\"9757846457\");\r",
+									"//});\r",
+									"pm.test(\"verify the userStatus of the response body should be 0\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.userStatus).to.be.equal(0);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/apurvapandit",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"apurvapandit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User_autoscript",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"variable_key\", \"variable_value\");\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.expect(pm.response.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"OK\");\r",
+									"});\r",
+									"pm.test(\"verify the id of the response body equal to 1 \", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.id).to.be.equal(1);\r",
+									"});\r",
+									"pm.test(\"verify the username of the response body apurvapandit\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.username).to.be.equal(\"apurvapandit\");\r",
+									"});\r",
+									"pm.test(\"verify the firstName of the response body apurva\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.firstName).to.be.equal(\"apurva\");\r",
+									"});\r",
+									"pm.test(\"verify the lastName of the response body pandit\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.lastName).to.be.equal(\"pandit\");\r",
+									"});\r",
+									"pm.test(\"verify the email of the response body abc@gmail.com\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.email).to.be.equal(\"abc@gmail.com\");\r",
+									"});\r",
+									"//pm.test(\"verify the password of the response body Testometer@123\", function () {\r",
+									"  //  var resp = pm.response.json();\r",
+									"    //pm.expect(resp.password).to.be.equal(\"Testometer@123\");\r",
+									"//});\r",
+									"pm.test(\"verify the phone of the response body should be 9757846457\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.phone).to.be.equal(\"+919757846457\");\r",
+									"});\r",
+									"pm.test(\"verify the userStatus of the response body should be 0\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.userStatus).to.be.equal(0);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/user/apurvapandit",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"user",
+								"apurvapandit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User_Invalid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"variable_key\", \"variable_value\");\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.expect(pm.response.code).to.be.equal(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"OK\");\r",
+									"});\r",
+									"pm.test(\"verify the id of the response body equal to 1 \", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.id).to.be.equal(1);\r",
+									"});\r",
+									"pm.test(\"verify the username of the response body apurvapandit\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.username).to.be.equal(\"apurvapandit\");\r",
+									"});\r",
+									"pm.test(\"verify the firstName of the response body apurva\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.firstName).to.be.equal(\"apurva\");\r",
+									"});\r",
+									"pm.test(\"verify the lastName of the response body pandit\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.lastName).to.be.equal(\"pandit\");\r",
+									"});\r",
+									"pm.test(\"verify the email of the response body abc@gmail.com\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.email).to.be.equal(\"abc@gmail.com\");\r",
+									"});\r",
+									"//pm.test(\"verify the password of the response body Testometer@123\", function () {\r",
+									"  //  var resp = pm.response.json();\r",
+									"    //pm.expect(resp.password).to.be.equal(\"Testometer@123\");\r",
+									"//});\r",
+									"pm.test(\"verify the phone of the response body should be 9757846457\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.phone).to.be.equal(\"9757846457\");\r",
+									"});\r",
+									"pm.test(\"verify the userStatus of the response body should be 0\", function () {\r",
+									"    var resp = pm.response.json();\r",
+									"    pm.expect(resp.userStatus).to.be.equal(0);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/apurvapandit",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"apurvapandit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_username",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user/YDZ",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user",
+								"YDZ"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reqres",
+			"item": [
+				{
+					"name": "ListUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users?page=2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_successful",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/login",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_Unsuccessful",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"peter@klaven\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/login",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res1 = pm.response.json()\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"status line is OK\", function (){\r",
+									"    pm.expect(pm.response.status).to.be.equal (\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status placed\", function(){\r",
+									"//var res1 = pm.response.json();\r",
+									"// scope of local variable inside particular testcase\r",
+									"    pm.expect(res1.status).to.be.oneOf([\"placed\",\"cancelled\"]);\r",
+									"});\r",
+									"pm.test(\"validate petId should be 3\", function(){\r",
+									"    pm.expect(res1.petId).to.be.equal(3);\r",
+									"});\r",
+									"pm.test(\"validate the value for complete in the given response\", function(){\r",
+									"    pm.expect(res1.complete).to.be.equal(true);\r",
+									"});\r",
+									"pm.test(\"valiadte shipDate should be 2024-12-01T03:47:41.541+0000\",function(){\r",
+									"    pm.expect(res1.shipDate).to.be.equal(\"2024-12-01T03:47:41.541+0000\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"petId\": 3,\r\n  \"quantity\": 5,\r\n  \"shipDate\": \"2024-12-01T03:47:41.541Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/store/order",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "storeInventory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/store/inventory",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order_ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/store/order/38775609",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order",
+								"38775609"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/store/order/38775609",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order",
+								"38775609"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
